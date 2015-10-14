@@ -475,7 +475,6 @@ module.exports = function(grunt) {
     var done = this.async();
     var i = 0;
     var series = [];
-    var resizeparallel = [];
     var options = this.options(DEFAULT_OPTIONS); // Merge task-specific and/or target-specific options with these defaults.
     var tally = {};
     var task = this;
@@ -489,7 +488,7 @@ module.exports = function(grunt) {
     options.units = _.extend(_.clone(DEFAULT_UNIT_OPTIONS), options.units);
 
     options.sizes.forEach(function(s) {
-
+      var resizeparallel = [];
       var sizeOptions = _.extend({}, options, s);
 
       if (!isValidSize(sizeOptions.width, sizeOptions.height)) {
